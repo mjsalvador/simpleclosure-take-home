@@ -40,7 +40,10 @@ export default function RootLayout({
       )}
     >
       <body className="flex min-h-full flex-col">
-        <AppProvider>{children}</AppProvider>
+        <main className="flex-1">
+          <AppProvider>{children}</AppProvider>
+        </main>
+        <footer className="mt-10 border-t py-6" />
       </body>
     </html>
   );
