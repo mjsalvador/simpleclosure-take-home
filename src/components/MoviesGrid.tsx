@@ -1,7 +1,8 @@
-import { AlertCircle } from 'lucide-react';
 import { Movie } from '@/app/types';
 import { MovieCard } from '@/components/MovieCard';
-import { SkeletonCard } from '@/components/ui/skeleton-card';
+import { SkeletonCard } from '@/components/SkeletonCard';
+import { ErrorCard } from '@/components/ErrorCard';
+import { SearchX } from 'lucide-react';
 
 interface MoviesGridProps {
   movies: Movie[];
@@ -11,13 +12,7 @@ interface MoviesGridProps {
 
 export function MoviesGrid({ movies, isLoading, isError }: MoviesGridProps) {
   if (isError) {
-    return (
-      <div className="border-destructive bg-destructive/10 text-destructive flex flex-col items-center gap-2 rounded-2xl border p-12">
-        <AlertCircle className="size-6" />
-        <p className="text-sm font-medium">Oops! Something went wrong</p>
-        <p className="text-destructive text-xs">{isError}</p>
-      </div>
-    );
+    return <ErrorCard isError={isError} />;
   }
 
   if (isLoading) {
@@ -26,6 +21,16 @@ export function MoviesGrid({ movies, isLoading, isError }: MoviesGridProps) {
         {Array.from({ length: 20 }).map((_, i) => (
           <SkeletonCard key={i} />
         ))}
+      </div>
+    );
+  }
+
+  if (movies.length === 0) {
+    return (
+      <div className="flex flex-col items-center gap-2 rounded-2xl border p-8 text-center">
+        <SearchX className="size-6" />
+        <p className="text-sm font-medium">No movies match your filters</p>
+        <p className="text-xs">Try removing a genre or two.</p>
       </div>
     );
   }
