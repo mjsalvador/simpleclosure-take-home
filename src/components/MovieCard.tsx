@@ -17,7 +17,7 @@ const BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 export function MovieCard({ movie }: MovieCardProps) {
   const year = new Date(movie.release_date).getFullYear();
-  const rating = movie.vote_average;
+  const rating = Math.round(movie.vote_average * 10) / 10;
 
   return (
     <div className="relative flex flex-col overflow-hidden rounded-2xl border shadow-md">
