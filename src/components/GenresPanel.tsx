@@ -12,10 +12,10 @@ export function GenresPanel({
   selectedGenres,
   onSelectedGenresChange,
 }: GenresPanelProps) {
-  const { genres, isLoading, isError } = useGetGenres();
+  const { genres, isLoading, error } = useGetGenres();
 
-  if (isError) {
-    return <ErrorCard isError={isError} />;
+  if (error) {
+    return <ErrorCard error={error} />;
   }
 
   if (isLoading) {

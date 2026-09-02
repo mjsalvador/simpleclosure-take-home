@@ -11,7 +11,7 @@ export default function Home() {
   const [sortBy, setSortBy] = useState<SortBy>('popularity');
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
 
-  const { movies, isLoading, isError } = useGetMovies();
+  const { movies, isLoading, error } = useGetMovies();
 
   const filteredMovies = useMemo(() => {
     const genres = new Set(selectedGenres);
@@ -60,7 +60,7 @@ export default function Home() {
         <MoviesGrid
           movies={filteredMovies}
           isLoading={isLoading}
-          isError={isError}
+          error={error}
         />
       </div>
     </div>
