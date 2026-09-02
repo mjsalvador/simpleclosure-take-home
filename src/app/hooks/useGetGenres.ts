@@ -1,5 +1,6 @@
 import useSWR from 'swr';
 import { GenresResponse } from '@/app/types';
+import { getErrorMessage } from '@/lib/utils';
 
 export function useGetGenres() {
   const { data, isLoading, error } = useSWR<GenresResponse>('/api/genres');
@@ -7,6 +8,6 @@ export function useGetGenres() {
   return {
     genres: data ? data.genres : [],
     isLoading,
-    isError: error,
+    error: error ? getErrorMessage(error) : null,
   };
 }

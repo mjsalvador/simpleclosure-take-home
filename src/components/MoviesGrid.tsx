@@ -7,12 +7,12 @@ import { SearchX } from 'lucide-react';
 interface MoviesGridProps {
   movies: Movie[];
   isLoading: boolean;
-  isError?: string | null;
+  error?: string | null;
 }
 
-export function MoviesGrid({ movies, isLoading, isError }: MoviesGridProps) {
-  if (isError) {
-    return <ErrorCard isError={isError} />;
+export function MoviesGrid({ movies, isLoading, error }: MoviesGridProps) {
+  if (error) {
+    return <ErrorCard error={error} />;
   }
 
   if (isLoading) {
