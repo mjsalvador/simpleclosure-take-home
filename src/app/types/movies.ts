@@ -21,3 +21,5 @@ export interface MoviesResponse {
   total_pages: number;
   total_results: number;
 }
+
+export type SortBy = 'title' | 'vote_average' | 'release_date' | 'popularity';
