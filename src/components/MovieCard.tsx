@@ -39,7 +39,7 @@ export function MovieCard({ movie }: MovieCardProps) {
 
         {/* overview overlay */}
         <div className="absolute inset-0 flex flex-col justify-end bg-black/70 p-4 opacity-0 duration-300 hover:opacity-100">
-          <p className="line-clamp-6 text-sm leading-relaxed tracking-tight text-zinc-200 lg:line-clamp-none">
+          <p className="line-clamp-6 text-xs leading-relaxed tracking-tight text-zinc-200 md:line-clamp-5 lg:line-clamp-6 lg:text-sm 2xl:line-clamp-none">
             {movie.overview}
           </p>
         </div>
